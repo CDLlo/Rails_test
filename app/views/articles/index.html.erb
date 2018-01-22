@@ -1,0 +1,26 @@
+<h1>Listing articles</h1>
+
+<%= link_to 'New Ooficle', new_article_path %>
+
+<audio src="<%= audio_path 'Deja_Oof.mp3'%>" type="audio/mpeg" controls>
+    Your browser does not support the audio element.
+</audio>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td><%= link_to 'DestrBoi', article_path(article),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
